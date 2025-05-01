@@ -1,0 +1,16 @@
+import { HttpClient } from '@angular/common/http';
+import { Component, inject } from '@angular/core';
+
+@Component({
+  selector: 'app-recipe-list',
+  standalone: true,
+  imports: [],
+  templateUrl: './recipe-list.component.html',
+  styleUrl: './recipe-list.component.scss'
+})
+export class RecipeListComponent {
+ 
+  
+  
+
+}
