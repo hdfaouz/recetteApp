@@ -1,14 +1,20 @@
 {
-    "posts": [
+    "recettes": [
         {
             "id": 1,
-            "title": "JSON-Server",
-            "author": "Amit"
-        },
-        {
+            "nom": "Pizza",
+            "ingredient": "Flour, Cheese",
+            "etapes": "Bake",
+            "image": "pizza.jpg",
+            "category": "Main"
+          },
+          {
             "id": 2,
-            "title": "Node.js",
-            "author": "Mohit"
-        }
+            "nom": "Pizza",
+            "ingredient": "Flour, Cheese",
+            "etapes": "Bake",
+            "image": "pizza.jpg",
+            "category": "Main"
+          }
     ]
 }

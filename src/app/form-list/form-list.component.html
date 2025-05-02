@@ -1,0 +1,42 @@
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">Ajouter une Recette</h1>
+            <form (ngSubmit)="ajouterRecipe()">
+                <div class="mb-3">
+                    <label for="nom" class="form-label">Nom de la recette :</label>
+                    <input [(ngModel)]="recipe.nom" class="form-control" type="text" id="nom" name="nom" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="ingredients" class="form-label">Ingrédients :</label>
+                    <textarea [(ngModel)]="recipe.ingredients" class="form-control" id="ingredients" name="ingredients" rows="3" required></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="etapes" class="form-label">Les étapes :</label>
+                    <textarea [(ngModel)]="recipe.etapes" class="form-control" id="etapes" name="etapes" rows="5" required></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="img" class="form-label">URL de l'image :</label>
+                    <input [(ngModel)]="recipe.img" class="form-control" type="text" id="img" name="img">
+                </div>
+
+                <div class="mb-3">
+                    <label for="categorie" class="form-label">Catégorie</label>
+                    <select [(ngModel)]="recipe.categorie" class="form-select" id="categorie" name="categorie" required>
+                        <option value="">-- Sélectionnez --</option>
+                        <option value="Entrée">Entrée</option>
+                        <option value="Plat principal">Plat principal</option>
+                        <option value="Dessert">Dessert</option>
+                        <option value="Soupe">Soupe</option>
+                        <option value="Salade">Salade</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Ajouter</button>
+            </form>
+        </div>
+    </div>
+</div>

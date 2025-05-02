@@ -1,46 +1,35 @@
-<section class="ajouter">
-    <h1>Ajouter une recette</h1>
-    <form  id="recipeForm">
-        <div class="gouche">
-            <div class="group">
-                <label for="Nom" class="text-lab">Nom</label><br>
-                <input type="text" id="Nom" class="item">
+<div class="container my-4">
+    <div class="d-flex justify-content-center align-items-center mb-3">
+      <label class="form-label me-2 mb-0"><strong>Rechercher :</strong></label>
+      <input type="search" [(ngModel)]="rechercherRecipe" placeholder="Rechercher une recette" class="form-control w-auto">
+    </div>
+    <div class="d-flex justify-content-between mb-3 ">
+      <button (click)="selectionParcategorie='Entrée'" class="btn btn-warning">Entrée</button> <button (click)="selectionParcategorie='Plat principal'" class="btn btn-warning">Plat principal</button>
+      <button (click)="selectionParcategorie='Dessert'" class="btn btn-warning">Dessert</button> <button (click)="selectionParcategorie='Soupe'" class="btn btn-warning">Soupe </button>
+      <button (click)="selectionParcategorie='Salade'" class="btn btn-warning">Salade</button> <button (click)="selectionParcategorie=''" class="btn btn-dark">Toute</button>
+    </div>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+  
+      <div class="col" *ngFor="let recipes of recipesList">
+        <div class="card h-100" *ngIf="(!selectionParcategorie || recipes.categorie == selectionParcategorie) && (!rechercherRecipe || recipes.nom.toLowerCase().includes(rechercherRecipe.toLowerCase()))">
+          <img [src]="recipes.img" class="card-img-top" alt="Recipe image" style="height: 200px; object-fit: cover;">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ recipes.nom }}</h5>
+            <p class="card-text ING"><b>Ingrédients :</b> <br>{{ recipes.ingredients }}</p>
+            <p><b>Étapes :</b> {{ recipes.etapes }}</p>
+            <p><b>Catégorie :</b> <span>{{ recipes.categorie }}</span></p>
+            <p><b>Date :</b> {{ recipes.data | date}}</p>
+            <div class="mt-auto d-flex justify-content-between">
+              <button (click)="deleteRecipe(recipes.id)" class="btn btn-danger">
+                <i class="bi bi-trash3"></i>
+              </button>
+              <button [routerLink]="['/recipe-detail',recipes.id]" class="btn btn-primary">
+                <i class="bi bi-eyeglasses"></i>
+              </button>
             </div>
-            <div class="group">
-                <label for="Categorie" class="text-lab">Catégorie</label><br>
-                <select id="Categorie"  class="item">
-                    <option value="entree">Entrée</option>
-                    <option value="plat_Principal">Plat_principal</option>
-                    <option value="dessert">Dessert</option>
-                </select>
-                
-            </div>
-            <div class="group">
-                <label for="temps" class="text-lab">Temps_de_préparation</label><br>
-                <input type="text" id="temps" class="item">
-            </div>
-            <div class="group">
-                <label for="preparation" class="text-lab">préparation</label><br>
-                <textarea class="item" id="preparation"></textarea>
-            </div>
+          </div>
         </div>
-        <div class="droite">
-            <div class="group">
-                <div class="img-conter">
-                        <div class="preview">
-                            <img src="" alt="" id="file-image">
-                        </div>
-                        <label for="img" id="label-img">Image</label><br>
-                        <input type="file" accept="image/*" id="img" onchange="showPreview(event);">    
-                </div>
-
-            </div>
-            <div class="group">
-                <label for="ingredients" class="text-lab">Ingredients</label><br>
-                <textarea class="item" id="ingredients"></textarea>
-            </div>
-        </div>
-        <button id="btn_ajouter" type="submit">Ajouter</button>
-    </form>
-    
-</section>
+      </div>
+    </div>
+  </div>
+  
